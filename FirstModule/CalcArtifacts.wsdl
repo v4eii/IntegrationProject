@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="Calc" targetNamespace="http://FirstModule/CalcArtifacts" xmlns:plnk="http://schemas.xmlsoap.org/ws/2004/03/partner-link/" xmlns:tns="http://FirstModule/CalcArtifacts" xmlns:wsdl0="http://FirstModule/CalculateInterface" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <plnk:partnerLinkType name="CalculateInterfacePLT">
+    <plnk:role name="Interface">
+      <plnk:portType name="wsdl0:CalculateInterface"/>
+    </plnk:role>
+  </plnk:partnerLinkType>
+    <wsdl:import location="CalculateInterface.wsdl" namespace="http://FirstModule/CalculateInterface"/>
+</wsdl:definitions>

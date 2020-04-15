@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="BP2" targetNamespace="http://SecondModule/BP2Artifacts" xmlns:plnk="http://schemas.xmlsoap.org/ws/2004/03/partner-link/" xmlns:tns="http://SecondModule/BP2Artifacts" xmlns:wsdl0="http://SecondModule/BP2Interface" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <plnk:partnerLinkType name="BP2InterfacePLT">
+    <plnk:role name="Interface">
+      <plnk:portType name="wsdl0:BP2Interface"/>
+    </plnk:role>
+  </plnk:partnerLinkType>
+  <plnk:partnerLinkType name="BP2InterfacePLT1">
+    <plnk:role name="Interface">
+      <plnk:portType name="wsdl0:BP2Interface"/>
+    </plnk:role>
+  </plnk:partnerLinkType>
+    <wsdl:import location="BP2Interface.wsdl" namespace="http://SecondModule/BP2Interface"/>
+</wsdl:definitions>

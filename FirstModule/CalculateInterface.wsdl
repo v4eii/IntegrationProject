@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="CalculateInterface" targetNamespace="http://FirstModule/CalculateInterface" xmlns:tns="http://FirstModule/CalculateInterface" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <wsdl:types>
+    <xsd:schema targetNamespace="http://FirstModule/CalculateInterface">
+      <xsd:element name="sum">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="value1" nillable="true" type="xsd:int"/>
+            <xsd:element name="value2" nillable="true" type="xsd:int"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="sumResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="result" nillable="true" type="xsd:int"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+    <wsdl:message name="sumRequestMsg">
+    <wsdl:part element="tns:sum" name="sumParameters"/>
+  </wsdl:message>
+    <wsdl:message name="sumResponseMsg">
+    <wsdl:part element="tns:sumResponse" name="sumResult"/>
+  </wsdl:message>
+    <wsdl:portType name="CalculateInterface">
+    <wsdl:operation name="sum">
+      <wsdl:input message="tns:sumRequestMsg" name="sumRequest"/>
+      <wsdl:output message="tns:sumResponseMsg" name="sumResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>
