@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="CalcDiv" targetNamespace="http://FirstModule/CalcDivArtifacts" xmlns:plnk="http://schemas.xmlsoap.org/ws/2004/03/partner-link/" xmlns:tns="http://FirstModule/CalcDivArtifacts" xmlns:wsdl0="http://FirstModule/CalcInterfaceDiv" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <plnk:partnerLinkType name="CalcInterfaceDivPLT">
+    <plnk:role name="Interface">
+      <plnk:portType name="wsdl0:CalcInterfaceDiv"/>
+    </plnk:role>
+  </plnk:partnerLinkType>
+    <wsdl:import location="CalcInterfaceDiv.wsdl" namespace="http://FirstModule/CalcInterfaceDiv"/>
+</wsdl:definitions>

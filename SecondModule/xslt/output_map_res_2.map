@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?><mappingRoot xmlns="http://www.ibm.com/2008/ccl/Mapping" domainID="com.ibm.msl.mapping.xml" targetNamespace="http://SecondModule/xslt/output_map_res_2" version="8.0.5.0" xmlns:map="http://SecondModule/xslt/output_map_res_2">
-    <input correlationContext="" message="{http://FirstModule/CalculateInterface}sumResponseMsg" sharedContext="" smoName="wsdl-primary" transientContext="" type="smo" types="" xpath="/body"/>
-    <output correlationContext="" message="{http://SecondModule/BP2Interface}operation1ResponseMsg" sharedContext="" smoName="wsdl-primary" transientContext="" type="smo" types="" xpath="/body"/>
+    <input correlationContext="" message="{http://FirstModule/CalcInterfaceDiv}divResponseMsg" sharedContext="" smoName="wsdl-primary" transientContext="" type="smo" types="" xpath="/body"/>
+    <output correlationContext="" message="{http://SecondModule/BP2InterfaceDiv}divStringResponseMsg" sharedContext="" smoName="wsdl-primary" transientContext="" type="smo" types="" xpath="/body"/>
     <namespaces>
         <namespace kind="supplement" prefix="io6" uri="http://www.ibm.com/xmlns/prod/websphere/http/sca/6.1.0"/>
-        <namespace kind="supplement" prefix="in" uri="http://FirstModule/CalculateInterface"/>
+        <namespace kind="supplement" prefix="in" uri="wsdl.http://FirstModule/CalcInterfaceDiv"/>
         <namespace kind="supplement" prefix="io" uri="http://www.w3.org/2005/08/addressing"/>
         <namespace kind="supplement" prefix="io3" uri="http://schemas.xmlsoap.org/ws/2004/08/addressing"/>
-        <namespace kind="supplement" prefix="in2" uri="wsdl.http://FirstModule/CalculateInterface"/>
+        <namespace kind="supplement" prefix="in2" uri="http://FirstModule/CalcInterfaceDiv"/>
         <namespace kind="supplement" prefix="io2" uri="http://www.w3.org/2003/05/soap-envelope"/>
         <namespace kind="supplement" prefix="io5" uri="http://www.ibm.com/xmlns/prod/websphere/mq/sca/6.0.0"/>
         <namespace kind="supplement" prefix="io4" uri="http://www.ibm.com/websphere/sibx/smo/v6.0.1"/>
-        <namespace kind="supplement" prefix="out2" uri="wsdl.http://SecondModule/BP2Interface"/>
-        <namespace kind="supplement" prefix="out" uri="http://SecondModule/BP2Interface"/>
+        <namespace kind="supplement" prefix="out2" uri="http://SecondModule/BP2InterfaceDiv"/>
+        <namespace kind="supplement" prefix="out" uri="wsdl.http://SecondModule/BP2InterfaceDiv"/>
     </namespaces>
     <mappingDeclaration name="output_map_res_2">
         <input path="body"/>
         <output path="body"/>
         <move>
-            <input path="sumResponse/result"/>
-            <output path="operation1Response/output1"/>
+            <input path="divResponse/result"/>
+            <output path="divStringResponse/output1"/>
         </move>
     </mappingDeclaration>
 </mappingRoot>

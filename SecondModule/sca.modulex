@@ -11,23 +11,39 @@
   <extensionmodel:ExtensionMap namespace="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0">
     <extensions>
       <extendedObject href="sca.module#//@module"/>
-      <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:ModuleExtension"/>
-    </extensions>
-    <extensions>
-      <extendedObject href="CalcImport.import#//@import"/>
-      <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:NodeExtension" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0}SCAImportBinding" unknown="false" visible="true" x="621" y="171"/>
+      <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:ModuleExtension" autoLayout="true"/>
     </extensions>
     <extensions>
       <extendedObject href="BP2.component#//@Component"/>
-      <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:NodeExtension" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/business-process/6.0.0}ProcessImplementation" unknown="false" visible="true" x="272" y="146"/>
+      <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:NodeExtension" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/business-process/6.0.0}ProcessImplementation" unknown="false" visible="true" x="207" y="30"/>
     </extensions>
     <extensions>
       <extendedObject href="BP2Export.export#//@export"/>
-      <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:ExportExtension" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0}ExportBinding" unknown="false" visible="true" x="76" y="146" bound="true"/>
+      <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:ExportExtension" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0}ExportBinding" unknown="false" visible="true" x="30" y="30" bound="true"/>
     </extensions>
     <extensions>
       <extendedObject href="Mediation.component#//@Component"/>
-      <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:NodeExtension" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/mfc/6.0.0}MediationFlowImplementation" unknown="false" visible="true" x="440" y="146"/>
+      <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:NodeExtension" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/mfc/6.0.0}MediationFlowImplementation" unknown="false" visible="true" x="353" y="31"/>
+    </extensions>
+    <extensions>
+      <extendedObject href="BP2Division.component#//@Component"/>
+      <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:NodeExtension" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/business-process/6.0.0}ProcessImplementation" unknown="false" visible="true" x="207" y="99"/>
+    </extensions>
+    <extensions>
+      <extendedObject href="MediationDiv.component#//@Component"/>
+      <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:NodeExtension" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/mfc/6.0.0}MediationFlowImplementation" unknown="false" visible="true" x="353" y="100"/>
+    </extensions>
+    <extensions>
+      <extendedObject href="BP2DivisionExport.export#//@export"/>
+      <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:ExportExtension" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0}ExportBinding" unknown="false" visible="true" x="30" y="99" bound="true"/>
+    </extensions>
+    <extensions>
+      <extendedObject href="CalcMultImport.import#//@import"/>
+      <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:NodeExtension" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0}SCAImportBinding" unknown="false" visible="true" x="508" y="32"/>
+    </extensions>
+    <extensions>
+      <extendedObject href="CalcDivImport.import#//@import"/>
+      <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:NodeExtension" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/eis/6.0.0}JMSImportBinding" unknown="false" visible="true" x="516" y="101"/>
     </extensions>
   </extensionmodel:ExtensionMap>
 </xmi:XMI>

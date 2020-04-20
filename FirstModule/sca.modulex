@@ -10,16 +10,24 @@
   </extensionmodel:ExtensionMap>
   <extensionmodel:ExtensionMap namespace="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0">
     <extensions>
+      <extendedObject href="CalcDiv.component#//@Component"/>
+      <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:NodeExtension" unknown="false" visible="true" x="193" y="99"/>
+    </extensions>
+    <extensions>
       <extendedObject href="sca.module#//@module"/>
       <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:ModuleExtension" autoLayout="true"/>
     </extensions>
     <extensions>
-      <extendedObject href="CalcExport.export#//@export"/>
-      <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:ExportExtension" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0}ExportBinding" unknown="false" visible="true" x="30" y="30" bound="true"/>
+      <extendedObject href="CalcMultExport.export#//@export"/>
+      <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:ExportExtension" unknown="false" visible="true" x="30" y="30" bound="true"/>
     </extensions>
     <extensions>
-      <extendedObject href="Calc.component#//@Component"/>
-      <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:NodeExtension" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/business-process/6.0.0}ProcessImplementation" unknown="false" visible="true" x="184" y="30"/>
+      <extendedObject href="CalcMult.component#//@Component"/>
+      <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:NodeExtension" unknown="false" visible="true" x="193" y="30"/>
+    </extensions>
+    <extensions>
+      <extendedObject href="CalcDivExport.export#//@export"/>
+      <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:ExportExtension" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/eis/6.0.0}JMSExportBinding" unknown="false" visible="true" x="30" y="99" bound="true"/>
     </extensions>
   </extensionmodel:ExtensionMap>
 </xmi:XMI>

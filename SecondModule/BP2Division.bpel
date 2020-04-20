@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><bpws:process xmlns:bpws="http://schemas.xmlsoap.org/ws/2004/03/business-process/" xmlns:ns="http://SecondModule/BP2DivisionArtifacts" xmlns:ns0="http://SecondModule/BP2InterfaceDiv" xmlns:wpc="http://www.ibm.com/xmlns/prod/websphere/business-process/6.0.0/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.ibm.com/xmlns/prod/websphere/business-process/expression-lang/java/6.0.0/" name="BP2Division" suppressJoinFailure="yes" targetNamespace="http://SecondModule" wpc:continueOnError="no" wpc:displayName="BP2Division" wpc:executionMode="longRunning" wpc:id="1" wpc:validFrom="2020-04-20T07:00:57" wpc:version="IBM_8.6.0">
+  <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="BP2InterfaceDiv.wsdl" namespace="http://SecondModule/BP2InterfaceDiv"/>
+  <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="BP2DivisionArtifacts.wsdl" namespace="http://SecondModule/BP2DivisionArtifacts"/>
+  <bpws:partnerLinks>
+    <bpws:partnerLink myRole="Interface" name="BP2InterfaceDiv" partnerLinkType="ns:BP2InterfaceDivPLT" wpc:id="2"/>
+    <bpws:partnerLink name="Партнер_BP2InterfaceDiv" partnerLinkType="ns:BP2InterfaceDivPLT1" partnerRole="Interface" wpc:id="3"/>
+  </bpws:partnerLinks>
+  <bpws:variables>
+    <bpws:variable name="input1" type="xsd:string" wpc:id="7"/>
+    <bpws:variable name="input2" type="xsd:string" wpc:id="8"/>
+    <bpws:variable name="output1" type="xsd:string" wpc:id="9"/>
+  </bpws:variables>
+  <bpws:sequence name="HiddenSequence" wpc:id="1073741828">
+    <bpws:receive createInstance="yes" name="Получить" operation="divString" partnerLink="BP2InterfaceDiv" portType="ns0:BP2InterfaceDiv" wpc:displayName="Получить" wpc:id="5" wpc:transactionalBehavior="commitAfter">
+      <wpc:output>
+        <wpc:parameter name="input1" variable="input1"/>
+        <wpc:parameter name="input2" variable="input2"/>
+      </wpc:output>
+    </bpws:receive>
+    <bpws:invoke name="Вызвать" operation="divString" partnerLink="Партнер_BP2InterfaceDiv" portType="ns0:BP2InterfaceDiv" wpc:continueOnError="inherit" wpc:displayName="Вызвать" wpc:id="10">
+      <wpc:input>
+        <wpc:parameter name="input1" variable="input1"/>
+        <wpc:parameter name="input2" variable="input2"/>
+      </wpc:input>
+      <wpc:output>
+        <wpc:parameter name="output1" variable="output1"/>
+      </wpc:output>
+      <bpws:catchAll wpc:id="16">
+        <bpws:sequence name="HiddenSequence1" wpc:id="1073741842">
+          <bpws:invoke name="Фрагменткода" operation="null" partnerLink="null" portType="wpc:null" wpc:continueOnError="inherit" wpc:displayName="Фрагменткода" wpc:id="17">
+            <wpc:script>
+              <wpc:javaCode><![CDATA[System.err.println("Возникла ошибка в вызываемом модуле");]]></wpc:javaCode>
+            </wpc:script>
+          </bpws:invoke>
+          <bpws:terminate name="Завершить" wpc:displayName="Завершить" wpc:id="19"/>
+        </bpws:sequence>
+      </bpws:catchAll>
+    </bpws:invoke>
+    <bpws:reply name="Ответить" operation="divString" partnerLink="BP2InterfaceDiv" portType="ns0:BP2InterfaceDiv" wpc:displayName="Ответить" wpc:id="6">
+      <wpc:input>
+        <wpc:parameter name="output1" variable="output1"/>
+      </wpc:input>
+    </bpws:reply>
+  </bpws:sequence>
+</bpws:process>

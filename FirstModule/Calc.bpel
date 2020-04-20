@@ -10,7 +10,7 @@
     <bpws:variable name="result" type="xsd:int" wpc:id="8"/>
   </bpws:variables>
   <bpws:sequence name="HiddenSequence" wpc:id="1073741827">
-    <bpws:receive createInstance="yes" name="Получить" operation="sum" partnerLink="CalculateInterface" portType="ns0:CalculateInterface" wpc:displayName="Получить" wpc:id="4" wpc:transactionalBehavior="commitAfter">
+    <bpws:receive createInstance="yes" name="Получить" operation="mult" partnerLink="CalculateInterface" portType="ns0:CalculateInterface" wpc:displayName="Получить" wpc:id="4" wpc:transactionalBehavior="commitAfter">
       <wpc:output>
         <wpc:parameter name="value1" variable="value1"/>
         <wpc:parameter name="value2" variable="value2"/>
@@ -63,7 +63,7 @@ result = new java.lang.Integer((int)__result__3);
 //!SMAP!1000000:44,1]]></wpc:javaCode>
       </wpc:script>
     </bpws:invoke>
-    <bpws:reply name="Ответить" operation="sum" partnerLink="CalculateInterface" portType="ns0:CalculateInterface" wpc:displayName="Ответить" wpc:id="5">
+    <bpws:reply name="Ответить" operation="mult" partnerLink="CalculateInterface" portType="ns0:CalculateInterface" wpc:displayName="Ответить" wpc:id="5">
       <wpc:input>
         <wpc:parameter name="result" variable="result"/>
       </wpc:input>

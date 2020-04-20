@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="BP2InterfaceDiv" targetNamespace="http://SecondModule/BP2InterfaceDiv" xmlns:tns="http://SecondModule/BP2InterfaceDiv" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <wsdl:types>
+    <xsd:schema targetNamespace="http://SecondModule/BP2InterfaceDiv">
+      <xsd:element name="divString">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="input1" nillable="true" type="xsd:string"/>
+            <xsd:element name="input2" nillable="true" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="divStringResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="output1" nillable="true" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+            <xsd:element name="divStringFault1" nillable="true" type="xsd:string"/>
+        </xsd:schema>
+  </wsdl:types>
+    <wsdl:message name="divStringRequestMsg">
+    <wsdl:part element="tns:divString" name="divStringParameters"/>
+  </wsdl:message>
+    <wsdl:message name="divStringResponseMsg">
+    <wsdl:part element="tns:divStringResponse" name="divStringResult"/>
+  </wsdl:message>
+    <wsdl:message name="divString_divStringFault1Msg">
+    <wsdl:part element="tns:divStringFault1" name="divStringFault1"/>
+  </wsdl:message>
+    <wsdl:portType name="BP2InterfaceDiv">
+    <wsdl:operation name="divString">
+      <wsdl:input message="tns:divStringRequestMsg" name="divStringRequest"/>
+      <wsdl:output message="tns:divStringResponseMsg" name="divStringResponse"/>
+            <wsdl:fault message="tns:divString_divStringFault1Msg" name="divStringFault1"/>
+        </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

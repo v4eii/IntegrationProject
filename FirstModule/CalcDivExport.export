@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scdl:export xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:EIS="http://www.ibm.com/xmlns/prod/websphere/scdl/eis/6.0.0" xmlns:configuration_6.1.0="http://www.ibm.com/xmlns/prod/websphere/j2ca/configuration/6.1.0" xmlns:ns1="http://FirstModule/CalcInterfaceDiv" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="CalcDivExport" name="CalcDivExport" target="CalcDiv">
+  <interfaces>
+    <interface xsi:type="wsdl:WSDLPortType" preferredInteractionStyle="async" portType="ns1:CalcInterfaceDiv"/>
+  </interfaces>
+  <esbBinding xsi:type="EIS:JMSExportBinding" dataBindingReferenceName="configuration_6.1.0:UTF8XMLDataHandler">
+    <faults faultBindingType="com.ibm.wbiserver.datahandler.SOAPDataHandler"/>
+    <resourceAdapter type="com.ibm.ws.sib.api.jmsra.impl.JmsJcaResourceAdapterImpl"/>
+    <connection type="com.ibm.ws.sib.api.jmsra.impl.JmsJcaActivationSpecImpl" listenerType="javax.jms.MessageListener" selectorType="com.ibm.wbiserver.functionselector.ConstantFunctionSelector">
+      <properties>
+        <DestinationType>javax.jms.Queue</DestinationType>
+      </properties>
+      <authentication resAuthAlias="DeAdminAlias"/>
+    </connection>
+    <methodBinding method="div" nativeMethod="div"/>
+    <responseConnection type="com.ibm.ws.sib.api.jmsra.impl.JmsJcaManagedConnectionFactoryImpl">
+      <authentication resAuthAlias="DeAdminAlias"/>
+    </responseConnection>
+    <destination implType="com.ibm.ws.sib.api.jms.impl.JmsQueueImpl" type="javax.jms.Queue" usage="receive"/>
+    <destination implType="com.ibm.ws.sib.api.jms.impl.JmsQueueImpl" type="javax.jms.Queue" usage="send"/>
+    <destination implType="com.ibm.ws.sib.api.jms.impl.JmsQueueImpl" type="javax.jms.Queue" usage="callback"/>
+  </esbBinding>
+</scdl:export>

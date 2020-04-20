@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mediationFlow xmlns="http://www.ibm.com/xmlns/prod/websphere/2010/MediationFlow" xmlns:XMLSchema="http://www.w3.org/2001/XMLSchema" xmlns:mfcex="http://www.ibm.com/xmlns/prod/websphere/2010/MediationFlowExtension" xmlns:ns2="http://FirstModule/CalcInterfaceDiv" xmlns:ns2_1="http://SecondModule/BP2InterfaceDiv" name="MediationDiv" targetNamespace="http://SecondModule/MediationDiv">
+  <import location="BP2InterfaceDiv.wsdl" namespace="http://SecondModule/BP2InterfaceDiv"/>
+  <import location="CalcInterfaceDiv.wsdl" namespace="http://FirstModule/CalcInterfaceDiv"/>
+  <promotedProperty name="Партнер_CalcInterfaceDiv_div_Callout.retryOn" group="SecondModule.MediationDiv" value="0"/>
+  <promotedProperty name="Партнер_CalcInterfaceDiv_div_Callout.retryCount" group="SecondModule.MediationDiv" value="0"/>
+  <promotedProperty name="Партнер_CalcInterfaceDiv_div_Callout.retryDelay" group="SecondModule.MediationDiv" value="0"/>
+  <reference name="Партнер_CalcInterfaceDiv" portType="ns2:CalcInterfaceDiv"/>
+  <interface portType="ns2_1:BP2InterfaceDiv">
+    <operation name="divString">
+      <requestFlow mfcex:showInputResponse="false" mfcex:showInputFault="false">
+        <note mfcex:x="20" mfcex:y="250">TODO: 1. Дважды щелкните на input_map, чтобы реализовать преобразование ввода.
+2. Завершите оставшиеся задачи в потоке ответа.</note>
+        <node displayName="divString : BP2InterfaceDiv" name="BP2InterfaceDiv_divString_Input" type="Input">
+          <outputTerminal type="ns2_1:divStringRequestMsg">
+            <wire targetNode="input_map"/>
+          </outputTerminal>
+        </node>
+        <node displayName="div : Партнер_CalcInterfaceDiv" name="Партнер_CalcInterfaceDiv_div_Callout" type="Callout">
+          <property name="referenceName" value="Партнер_CalcInterfaceDiv"/>
+          <property name="operationName" value="div"/>
+          <property name="retryOn" promotedPropertyGroup="SecondModule.MediationDiv" promotedPropertyName="Партнер_CalcInterfaceDiv_div_Callout.retryOn"/>
+          <property name="retryCount" promotedPropertyGroup="SecondModule.MediationDiv" promotedPropertyName="Партнер_CalcInterfaceDiv_div_Callout.retryCount"/>
+          <property name="retryDelay" promotedPropertyGroup="SecondModule.MediationDiv" promotedPropertyName="Партнер_CalcInterfaceDiv_div_Callout.retryDelay"/>
+          <inputTerminal type="ns2:divRequestMsg"/>
+        </node>
+        <node name="input_map" type="XSLTransformation">
+          <property name="root" value="/body"/>
+          <property name="XSLTransform" value="xslt/input_map_req_2.xsl"/>
+          <property name="XMXMap" value="xslt/input_map_req_2.map"/>
+          <property name="SMOVersion" value="SMO61"/>
+          <inputTerminal type="ns2_1:divStringRequestMsg"/>
+          <outputTerminal type="ns2:divRequestMsg">
+            <wire targetNode="Партнер_CalcInterfaceDiv_div_Callout"/>
+          </outputTerminal>
+          <failTerminal/>
+        </node>
+      </requestFlow>
+      <responseFlow>
+        <note mfcex:x="20" mfcex:y="250">TODO: Дважды щелкните на output_map, чтобы реализовать преобразование вывода.</note>
+        <node displayName="div : Партнер_CalcInterfaceDiv" name="Партнер_CalcInterfaceDiv_div_CalloutResponse" type="CalloutResponse">
+          <property name="referenceName" value="Партнер_CalcInterfaceDiv"/>
+          <property name="operationName" value="div"/>
+          <outputTerminal type="ns2:divResponseMsg">
+            <wire targetNode="output_map"/>
+          </outputTerminal>
+          <failTerminal type="ns2:divRequestMsg"/>
+        </node>
+        <node displayName="divString : BP2InterfaceDiv" name="BP2InterfaceDiv_divString_InputResponse" type="InputResponse">
+          <inputTerminal type="ns2_1:divStringResponseMsg"/>
+        </node>
+        <node displayName="divString : BP2InterfaceDiv" name="BP2InterfaceDiv_divString_InputFault" type="InputFault">
+          <inputTerminal name="divString_divStringFault1Msg" type="ns2_1:divString_divStringFault1Msg"/>
+        </node>
+        <node name="output_map" type="XSLTransformation">
+          <property name="root" value="%xslt.root.default"/>
+          <property name="XSLTransform" value="xslt/output_map_res_2.xsl"/>
+          <property name="XMXMap" value="xslt/output_map_res_2.map"/>
+          <property name="SMOVersion" value="SMO61"/>
+          <inputTerminal type="ns2:divResponseMsg"/>
+          <outputTerminal type="ns2_1:divStringResponseMsg">
+            <wire targetNode="BP2InterfaceDiv_divString_InputResponse"/>
+          </outputTerminal>
+          <failTerminal/>
+        </node>
+      </responseFlow>
+      <errorFlow>
+        <node displayName="divString : BP2InterfaceDiv" name="BP2InterfaceDiv_divString_ErrorInput" type="ErrorInput">
+          <outputTerminal name="catchAll" type="XMLSchema:anyType"/>
+        </node>
+        <node displayName="divString : BP2InterfaceDiv" name="BP2InterfaceDiv_divString_InputResponse" type="InputResponse">
+          <inputTerminal type="ns2_1:divStringResponseMsg"/>
+        </node>
+        <node displayName="divString : BP2InterfaceDiv" name="BP2InterfaceDiv_divString_InputFault" type="InputFault">
+          <inputTerminal name="divString_divStringFault1Msg" type="ns2_1:divString_divStringFault1Msg"/>
+        </node>
+      </errorFlow>
+    </operation>
+  </interface>
+</mediationFlow>

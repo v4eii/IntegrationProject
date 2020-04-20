@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="CalcInterfaceDiv" targetNamespace="http://FirstModule/CalcInterfaceDiv" xmlns:tns="http://FirstModule/CalcInterfaceDiv" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <wsdl:types>
+    <xsd:schema targetNamespace="http://FirstModule/CalcInterfaceDiv">
+      <xsd:element name="div">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="value1" nillable="true" type="xsd:int"/>
+            <xsd:element name="value2" nillable="true" type="xsd:int"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="divResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="result" nillable="true" type="xsd:int"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+            <xsd:element name="divFault1" nillable="true" type="xsd:string"/>
+        </xsd:schema>
+  </wsdl:types>
+    <wsdl:message name="divRequestMsg">
+    <wsdl:part element="tns:div" name="divParameters"/>
+  </wsdl:message>
+    <wsdl:message name="divResponseMsg">
+    <wsdl:part element="tns:divResponse" name="divResult"/>
+  </wsdl:message>
+    <wsdl:message name="div_divFault1Msg">
+    <wsdl:part element="tns:divFault1" name="divFault1"/>
+  </wsdl:message>
+    <wsdl:portType name="CalcInterfaceDiv">
+    <wsdl:operation name="div">
+      <wsdl:input message="tns:divRequestMsg" name="divRequest"/>
+      <wsdl:output message="tns:divResponseMsg" name="divResponse"/>
+            <wsdl:fault message="tns:div_divFault1Msg" name="divFault1"/>
+        </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

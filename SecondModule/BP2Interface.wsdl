@@ -16,7 +16,7 @@
           </xsd:sequence>
         </xsd:complexType>
       </xsd:element>
-    </xsd:schema>
+        </xsd:schema>
   </wsdl:types>
     <wsdl:message name="operation1RequestMsg">
     <wsdl:part element="tns:operation1" name="operation1Parameters"/>
@@ -29,5 +29,5 @@
       <wsdl:input message="tns:operation1RequestMsg" name="operation1Request"/>
       <wsdl:output message="tns:operation1ResponseMsg" name="operation1Response"/>
     </wsdl:operation>
-  </wsdl:portType>
+    </wsdl:portType>
 </wsdl:definitions>
