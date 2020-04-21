@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?><mappingRoot xmlns="http://www.ibm.com/2008/ccl/Mapping" domainID="com.ibm.msl.mapping.xml" targetNamespace="http://SecondModule/xslt/output_map_res_1" version="8.0.5.0" xmlns:map="http://SecondModule/xslt/output_map_res_1">
-    <input correlationContext="" message="{http://FirstModule/CalcInterfaceDiv}divResponseMsg" sharedContext="" smoName="wsdl-primary" transientContext="" type="smo" types="" xpath="/body"/>
-    <output correlationContext="" message="{http://SecondModule/BP2InterfaceDiv}divStringResponseMsg" sharedContext="" smoName="wsdl-primary" transientContext="" type="smo" types="" xpath="/body"/>
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot xmlns="http://www.ibm.com/2008/ccl/Mapping" domainID="com.ibm.msl.mapping.xml" targetNamespace="http://SecondModule/xslt/output_map_err_res_1" version="8.0.5.0" xmlns:map="http://SecondModule/xslt/output_map_err_res_1">
+    <input correlationContext="" message="{http://FirstModule/CalcInterfaceDiv}div_divFault1Msg" sharedContext="" smoName="wsdl-primary" transientContext="" type="smo" types="" xpath="/body"/>
+    <output correlationContext="" message="{http://SecondModule/BP2InterfaceDiv}divString_divStringFault1Msg" sharedContext="" smoName="wsdl-primary" transientContext="" type="smo" types="" xpath="/body"/>
     <namespaces>
         <namespace kind="supplement" prefix="io6" uri="http://www.ibm.com/xmlns/prod/websphere/http/sca/6.1.0"/>
         <namespace kind="supplement" prefix="in" uri="wsdl.http://FirstModule/CalcInterfaceDiv"/>
@@ -13,12 +13,12 @@
         <namespace kind="supplement" prefix="out2" uri="http://SecondModule/BP2InterfaceDiv"/>
         <namespace kind="supplement" prefix="out" uri="wsdl.http://SecondModule/BP2InterfaceDiv"/>
     </namespaces>
-    <mappingDeclaration name="output_map_res_1">
+    <mappingDeclaration name="output_map_err_res_1">
         <input path="body"/>
         <output path="body"/>
-        <convert>
-            <input path="divResponse/result"/>
-            <output path="divStringResponse/output1"/>
-        </convert>
+        <move>
+            <input path="divFault1"/>
+            <output path="divStringFault1"/>
+        </move>
     </mappingDeclaration>
 </mappingRoot>

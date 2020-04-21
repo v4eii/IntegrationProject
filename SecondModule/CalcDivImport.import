@@ -6,11 +6,16 @@
   <esbBinding xsi:type="EIS:JMSImportBinding" dataBindingReferenceName="configuration_6.1.0:UTF8XMLDataHandler" preferredOutputMessageType="BytesMessage">
     <scdl:bindingQualifier xsi:type="scdl:IsTargetSCA" value="true"/>
     <resourceAdapter type="com.ibm.ws.sib.api.jmsra.impl.JmsJcaResourceAdapterImpl"/>
-    <connection type="com.ibm.ws.sib.api.jmsra.impl.JmsJcaManagedConnectionFactoryImpl"/>
+    <connection type="com.ibm.ws.sib.api.jmsra.impl.JmsJcaManagedConnectionFactoryImpl">
+      <authentication resAuthAlias="DeAdminAlias"/>
+    </connection>
+    <responseConnection>
+      <authentication resAuthAlias="DeAdminAlias"/>
+    </responseConnection>
     <destination implType="com.ibm.ws.sib.api.jms.impl.JmsQueueImpl" target="FirstModule/CalcDivExport_RECEIVE_D" type="javax.jms.Queue" usage="send"/>
     <destination implType="com.ibm.ws.sib.api.jms.impl.JmsQueueImpl" target="FirstModule/CalcDivExport_SEND_D" type="javax.jms.Queue" usage="receive"/>
     <destination implType="com.ibm.ws.sib.api.jms.impl.JmsQueueImpl" type="javax.jms.Queue" usage="callback"/>
-    <methodBinding method="div">
+    <methodBinding inDataBindingType="com.ibm.websphere.sca.jms.data.impl.JMSDataBindingImplJava" method="div" outDataBindingType="com.ibm.websphere.sca.jms.data.impl.JMSDataBindingImplJava">
       <faultBinding fault="divFault1" nativeFault="divFault1"/>
     </methodBinding>
   </esbBinding>
