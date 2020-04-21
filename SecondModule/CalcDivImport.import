@@ -1,22 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <scdl:import xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:EIS="http://www.ibm.com/xmlns/prod/websphere/scdl/eis/6.0.0" xmlns:configuration_6.1.0="http://www.ibm.com/xmlns/prod/websphere/j2ca/configuration/6.1.0" xmlns:ns1="http://FirstModule/CalcInterfaceDiv" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="CalcDivImport" name="CalcDivImport">
   <interfaces>
-    <interface xsi:type="wsdl:WSDLPortType" preferredInteractionStyle="async" portType="ns1:CalcInterfaceDiv">
-      <scdl:interfaceQualifier xsi:type="scdl:JoinTransaction" value="false"/>
-    </interface>
+    <interface xsi:type="wsdl:WSDLPortType" preferredInteractionStyle="async" portType="ns1:CalcInterfaceDiv"/>
   </interfaces>
-  <esbBinding xsi:type="EIS:JMSImportBinding" faultSelector="com.ibm.wbiserver.faults.SOAPFaultSelector" dataBindingReferenceName="configuration_6.1.0:UTF8XMLDataHandler" preferredOutputMessageType="BytesMessage">
+  <esbBinding xsi:type="EIS:JMSImportBinding" dataBindingReferenceName="configuration_6.1.0:UTF8XMLDataHandler" preferredOutputMessageType="BytesMessage">
     <scdl:bindingQualifier xsi:type="scdl:IsTargetSCA" value="true"/>
-    <faults faultBindingType="com.ibm.wbiserver.datahandler.SOAPDataHandler"/>
     <resourceAdapter type="com.ibm.ws.sib.api.jmsra.impl.JmsJcaResourceAdapterImpl"/>
-    <connection type="com.ibm.ws.sib.api.jmsra.impl.JmsJcaManagedConnectionFactoryImpl">
-      <authentication resAuthAlias="DeAdminAlias"/>
-    </connection>
-    <destination implType="com.ibm.ws.sib.api.jms.impl.JmsQueueImpl" target="FirstModule/Экспорт_CalcDiv_RECEIVE_D" type="javax.jms.Queue" usage="send"/>
-    <destination implType="com.ibm.ws.sib.api.jms.impl.JmsQueueImpl" target="FirstModule/Экспорт_CalcDiv_SEND_D" type="javax.jms.Queue" usage="receive"/>
+    <connection type="com.ibm.ws.sib.api.jmsra.impl.JmsJcaManagedConnectionFactoryImpl"/>
+    <destination implType="com.ibm.ws.sib.api.jms.impl.JmsQueueImpl" target="FirstModule/CalcDivExport_RECEIVE_D" type="javax.jms.Queue" usage="send"/>
+    <destination implType="com.ibm.ws.sib.api.jms.impl.JmsQueueImpl" target="FirstModule/CalcDivExport_SEND_D" type="javax.jms.Queue" usage="receive"/>
     <destination implType="com.ibm.ws.sib.api.jms.impl.JmsQueueImpl" type="javax.jms.Queue" usage="callback"/>
     <methodBinding method="div">
-      <faultBinding fault="divFault1" faultBindingType="com.ibm.wbiserver.datahandler.SOAPDataHandler" nativeFault="divFault1"/>
+      <faultBinding fault="divFault1" nativeFault="divFault1"/>
     </methodBinding>
   </esbBinding>
 </scdl:import>

@@ -10,10 +10,6 @@
   </extensionmodel:ExtensionMap>
   <extensionmodel:ExtensionMap namespace="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0">
     <extensions>
-      <extendedObject href="sca.module#//@module"/>
-      <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:ModuleExtension" autoLayout="true"/>
-    </extensions>
-    <extensions>
       <extendedObject href="BP2.component#//@Component"/>
       <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:NodeExtension" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/business-process/6.0.0}ProcessImplementation" unknown="false" visible="true" x="207" y="30"/>
     </extensions>
@@ -42,8 +38,16 @@
       <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:NodeExtension" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0}SCAImportBinding" unknown="false" visible="true" x="508" y="32"/>
     </extensions>
     <extensions>
+      <extendedObject href="sca.module#//@module"/>
+      <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:ModuleExtension" autoLayout="true"/>
+    </extensions>
+    <extensions>
       <extendedObject href="CalcDivImport.import#//@import"/>
       <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:NodeExtension" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/eis/6.0.0}JMSImportBinding" unknown="false" visible="true" x="516" y="101"/>
+    </extensions>
+    <extensions>
+      <extendedObject href="sca.module#//@module"/>
+      <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:ModuleExtension"/>
     </extensions>
   </extensionmodel:ExtensionMap>
 </xmi:XMI>

@@ -63,16 +63,29 @@
           </outputTerminal>
           <failTerminal/>
         </node>
+        <node displayName="div : Партнер_CalcInterfaceDiv" name="Партнер_CalcInterfaceDiv_div_CalloutFault" type="CalloutFault">
+          <property name="referenceName" value="Партнер_CalcInterfaceDiv"/>
+          <property name="operationName" value="div"/>
+          <outputTerminal name="div_divFault1Msg" type="ns2:div_divFault1Msg"/>
+        </node>
       </responseFlow>
       <errorFlow>
         <node displayName="divString : BP2InterfaceDiv" name="BP2InterfaceDiv_divString_ErrorInput" type="ErrorInput">
-          <outputTerminal name="catchAll" type="XMLSchema:anyType"/>
+          <outputTerminal name="catchAll" type="XMLSchema:anyType">
+            <wire targetNode="ErrorHandling" targetTerminal="входящий"/>
+          </outputTerminal>
         </node>
         <node displayName="divString : BP2InterfaceDiv" name="BP2InterfaceDiv_divString_InputResponse" type="InputResponse">
           <inputTerminal type="ns2_1:divStringResponseMsg"/>
         </node>
         <node displayName="divString : BP2InterfaceDiv" name="BP2InterfaceDiv_divString_InputFault" type="InputFault">
           <inputTerminal name="divString_divStringFault1Msg" type="ns2_1:divString_divStringFault1Msg"/>
+        </node>
+        <node name="ErrorHandling" type="Subflow">
+          <property name="subflowFile" value="ErrorHandling.subflow"/>
+          <property name="subflowName" value="{http://SecondModule}ErrorHandling"/>
+          <inputTerminal description="Этот узел является начальной точкой внутреннего потока." name="входящий" type="XMLSchema:anyType"/>
+          <failTerminal/>
         </node>
       </errorFlow>
     </operation>
