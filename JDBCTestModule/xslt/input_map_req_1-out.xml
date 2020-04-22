@@ -4,7 +4,7 @@
       <id>1</id>
       <name>name</name>
       <value>value</value>
-      <price xsi:nil="true"/>
+      <price>0</price>
     </out:createDb2adminTestInput>
   </out:createDb2adminTest>
 </body>
