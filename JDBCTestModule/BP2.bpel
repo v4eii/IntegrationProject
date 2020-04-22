@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?><bpws:process xmlns:bpws="http://schemas.xmlsoap.org/ws/2004/03/business-process/" xmlns:ns="http://JDBCTestModule/BP2Artifacts" xmlns:ns0="http://JDBCTestModule" xmlns:ns1="http://JDBCTestModule/BP2Interface" xmlns:wpc="http://www.ibm.com/xmlns/prod/websphere/business-process/6.0.0/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.ibm.com/xmlns/prod/websphere/business-process/expression-lang/java/6.0.0/" name="BP2" suppressJoinFailure="yes" targetNamespace="http://JDBCTestModule" wpc:continueOnError="no" wpc:displayName="BP2" wpc:executionMode="longRunning" wpc:id="1" wpc:validFrom="2020-04-22T13:10:13" wpc:version="IBM_8.6.0">
+  <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="BP2Interface.wsdl" namespace="http://JDBCTestModule/BP2Interface"/>
+  <bpws:import importType="http://schemas.xmlsoap.org/wsdl/" location="BP2Artifacts.wsdl" namespace="http://JDBCTestModule/BP2Artifacts"/>
+  <bpws:import importType="http://www.w3.org/2001/XMLSchema" location="SimpleData.xsd" namespace="http://JDBCTestModule"/>
+  <bpws:partnerLinks>
+    <bpws:partnerLink myRole="Interface" name="BP2Interface" partnerLinkType="ns:BP2InterfacePLT" wpc:id="2"/>
+    <bpws:partnerLink name="Партнер_BP2Interface" partnerLinkType="ns:BP2InterfacePLT1" partnerRole="Interface" wpc:id="3"/>
+  </bpws:partnerLinks>
+  <bpws:variables>
+    <bpws:variable name="input1" type="ns0:SimpleData" wpc:id="7"/>
+    <bpws:variable name="output1" type="xsd:string" wpc:id="8"/>
+  </bpws:variables>
+  <bpws:sequence name="HiddenSequence" wpc:id="1073741828">
+    <bpws:receive createInstance="yes" name="Получить" operation="find" partnerLink="BP2Interface" portType="ns1:BP2Interface" wpc:displayName="Получить" wpc:id="5" wpc:transactionalBehavior="commitAfter">
+      <wpc:output>
+        <wpc:parameter name="input1" variable="input1"/>
+      </wpc:output>
+    </bpws:receive>
+    <bpws:invoke name="Вызвать" operation="find" partnerLink="Партнер_BP2Interface" portType="ns1:BP2Interface" wpc:continueOnError="inherit" wpc:displayName="Вызвать" wpc:id="9">
+      <wpc:input>
+        <wpc:parameter name="input1" variable="input1"/>
+      </wpc:input>
+      <wpc:output>
+        <wpc:parameter name="output1" variable="output1"/>
+      </wpc:output>
+    </bpws:invoke>
+    <bpws:reply name="Ответить" operation="find" partnerLink="BP2Interface" portType="ns1:BP2Interface" wpc:displayName="Ответить" wpc:id="6">
+      <wpc:input>
+        <wpc:parameter name="output1" variable="output1"/>
+      </wpc:input>
+    </bpws:reply>
+  </bpws:sequence>
+</bpws:process>

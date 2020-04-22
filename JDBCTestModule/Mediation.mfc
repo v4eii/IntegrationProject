@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<mediationFlow xmlns="http://www.ibm.com/xmlns/prod/websphere/2010/MediationFlow" xmlns:BP2Interface="http://JDBCTestModule/BP2Interface" xmlns:XMLSchema="http://www.w3.org/2001/XMLSchema" xmlns:mfcex="http://www.ibm.com/xmlns/prod/websphere/2010/MediationFlowExtension" xmlns:ns1="http://JDBCTestModule/BPInterface" xmlns:ns2="http://JDBCTestModule/JDBCImport" name="Mediation" targetNamespace="http://JDBCTestModule/Mediation">
+  <import location="BPInterface.wsdl" namespace="http://JDBCTestModule/BPInterface"/>
+  <import location="BP2Interface.wsdl" namespace="http://JDBCTestModule/BP2Interface"/>
+  <import location="JDBCImport.wsdl" namespace="http://JDBCTestModule/JDBCImport"/>
+  <promotedProperty name="Партнер_JDBCImport_createDb2adminTest_Callout.retryOn" group="JDBCTestModule.Mediation" value="0"/>
+  <promotedProperty name="Партнер_JDBCImport_createDb2adminTest_Callout.retryCount" group="JDBCTestModule.Mediation" value="0"/>
+  <promotedProperty name="Партнер_JDBCImport_createDb2adminTest_Callout.retryDelay" group="JDBCTestModule.Mediation" value="0"/>
+  <promotedProperty name="Партнер_JDBCImport_retrieveDb2adminTest_Callout.retryOn" group="JDBCTestModule.Mediation" value="0"/>
+  <promotedProperty name="Партнер_JDBCImport_retrieveDb2adminTest_Callout.retryCount" group="JDBCTestModule.Mediation" value="0"/>
+  <promotedProperty name="Партнер_JDBCImport_retrieveDb2adminTest_Callout.retryDelay" group="JDBCTestModule.Mediation" value="0"/>
+  <reference name="Партнер_JDBCImport" portType="ns2:JDBCImport"/>
+  <interface portType="ns1:BPInterface">
+    <operation name="create">
+      <requestFlow mfcex:showInputResponse="false" mfcex:showInputFault="false">
+        <note mfcex:x="20" mfcex:y="250">TODO: 1. Дважды щелкните на input_map, чтобы реализовать преобразование ввода.
+2. Завершите оставшиеся задачи в потоке ответа.</note>
+        <node displayName="create : BPInterface" name="BPInterface_create_Input" type="Input">
+          <outputTerminal type="ns1:createRequestMsg">
+            <wire targetNode="input_map"/>
+          </outputTerminal>
+        </node>
+        <node displayName="createDb2adminTest : Партнер_JDBCImport" name="Партнер_JDBCImport_createDb2adminTest_Callout" type="Callout">
+          <property name="referenceName" value="Партнер_JDBCImport"/>
+          <property name="operationName" value="createDb2adminTest"/>
+          <property name="retryOn" promotedPropertyGroup="JDBCTestModule.Mediation" promotedPropertyName="Партнер_JDBCImport_createDb2adminTest_Callout.retryOn"/>
+          <property name="retryCount" promotedPropertyGroup="JDBCTestModule.Mediation" promotedPropertyName="Партнер_JDBCImport_createDb2adminTest_Callout.retryCount"/>
+          <property name="retryDelay" promotedPropertyGroup="JDBCTestModule.Mediation" promotedPropertyName="Партнер_JDBCImport_createDb2adminTest_Callout.retryDelay"/>
+          <inputTerminal type="ns2:createDb2adminTestRequestMsg"/>
+        </node>
+        <node name="input_map" type="XSLTransformation">
+          <property name="root" value="/body"/>
+          <property name="XSLTransform" value="xslt/input_map_req_1.xsl"/>
+          <property name="XMXMap" value="xslt/input_map_req_1.map"/>
+          <property name="SMOVersion" value="SMO61"/>
+          <inputTerminal type="ns1:createRequestMsg"/>
+          <outputTerminal type="ns2:createDb2adminTestRequestMsg">
+            <wire targetNode="Партнер_JDBCImport_createDb2adminTest_Callout"/>
+          </outputTerminal>
+          <failTerminal/>
+        </node>
+      </requestFlow>
+      <responseFlow>
+        <node displayName="createDb2adminTest : Партнер_JDBCImport" name="Партнер_JDBCImport_createDb2adminTest_CalloutResponse" type="CalloutResponse">
+          <property name="referenceName" value="Партнер_JDBCImport"/>
+          <property name="operationName" value="createDb2adminTest"/>
+          <outputTerminal type="ns2:createDb2adminTestResponseMsg">
+            <wire targetNode="output_map"/>
+          </outputTerminal>
+          <failTerminal type="ns2:createDb2adminTestRequestMsg"/>
+        </node>
+        <node displayName="createDb2adminTest : Партнер_JDBCImport" name="Партнер_JDBCImport_createDb2adminTest_CalloutFault" type="CalloutFault">
+          <property name="referenceName" value="Партнер_JDBCImport"/>
+          <property name="operationName" value="createDb2adminTest"/>
+          <outputTerminal name="createDb2adminTestMissingDataFaultMsg" type="ns2:createDb2adminTestMissingDataFaultMsg">
+            <wire targetNode="Fail4"/>
+          </outputTerminal>
+          <outputTerminal name="createDb2adminTestUniqueConstraintFaultMsg" type="ns2:createDb2adminTestUniqueConstraintFaultMsg">
+            <wire targetNode="Fail1"/>
+          </outputTerminal>
+          <outputTerminal name="createDb2adminTestObjectNotFoundFaultMsg" type="ns2:createDb2adminTestObjectNotFoundFaultMsg">
+            <wire targetNode="Fail2"/>
+          </outputTerminal>
+          <outputTerminal name="createDb2adminTestIntegrityConstraintFaultMsg" type="ns2:createDb2adminTestIntegrityConstraintFaultMsg">
+            <wire targetNode="Fail3"/>
+          </outputTerminal>
+        </node>
+        <node displayName="create : BPInterface" name="BPInterface_create_InputResponse" type="InputResponse">
+          <inputTerminal type="ns1:createResponseMsg"/>
+        </node>
+        <node name="output_map" type="XSLTransformation">
+          <property name="root" value="/body"/>
+          <property name="XSLTransform" value="xslt/output_map_res_1.xsl"/>
+          <property name="XMXMap" value="xslt/output_map_res_1.map"/>
+          <property name="SMOVersion" value="SMO61"/>
+          <inputTerminal type="ns2:createDb2adminTestResponseMsg"/>
+          <outputTerminal type="ns1:createResponseMsg">
+            <wire targetNode="BPInterface_create_InputResponse"/>
+          </outputTerminal>
+          <failTerminal/>
+        </node>
+        <node name="Fail1" type="Fail">
+          <inputTerminal/>
+        </node>
+        <node name="Fail2" type="Fail">
+          <inputTerminal/>
+        </node>
+        <node name="Fail3" type="Fail">
+          <inputTerminal/>
+        </node>
+        <node name="Fail4" type="Fail">
+          <inputTerminal/>
+        </node>
+      </responseFlow>
+      <errorFlow>
+        <node displayName="create : BPInterface" name="BPInterface_create_ErrorInput" type="ErrorInput">
+          <outputTerminal name="catchAll" type="XMLSchema:anyType"/>
+        </node>
+        <node displayName="create : BPInterface" name="BPInterface_create_InputResponse" type="InputResponse">
+          <inputTerminal type="ns1:createResponseMsg"/>
+        </node>
+      </errorFlow>
+    </operation>
+  </interface>
+  <interface portType="BP2Interface:BP2Interface">
+    <operation name="find">
+      <requestFlow mfcex:showInputResponse="false" mfcex:showInputFault="false">
+        <note mfcex:x="20" mfcex:y="250">TODO: 1. Дважды щелкните на input_map, чтобы реализовать преобразование ввода.
+2. Завершите оставшиеся задачи в потоке ответа.</note>
+        <node displayName="find : BP2Interface" name="BP2Interface_find_Input" type="Input">
+          <outputTerminal type="BP2Interface:findRequestMsg">
+            <wire targetNode="input_map"/>
+          </outputTerminal>
+        </node>
+        <node displayName="retrieveDb2adminTest : Партнер_JDBCImport" name="Партнер_JDBCImport_retrieveDb2adminTest_Callout" type="Callout">
+          <property name="referenceName" value="Партнер_JDBCImport"/>
+          <property name="operationName" value="retrieveDb2adminTest"/>
+          <property name="retryOn" promotedPropertyGroup="JDBCTestModule.Mediation" promotedPropertyName="Партнер_JDBCImport_retrieveDb2adminTest_Callout.retryOn"/>
+          <property name="retryCount" promotedPropertyGroup="JDBCTestModule.Mediation" promotedPropertyName="Партнер_JDBCImport_retrieveDb2adminTest_Callout.retryCount"/>
+          <property name="retryDelay" promotedPropertyGroup="JDBCTestModule.Mediation" promotedPropertyName="Партнер_JDBCImport_retrieveDb2adminTest_Callout.retryDelay"/>
+          <inputTerminal type="ns2:retrieveDb2adminTestRequestMsg"/>
+        </node>
+        <node name="input_map" type="XSLTransformation">
+          <property name="root" value="/body"/>
+          <property name="XSLTransform" value="xslt/input_map_req_2.xsl"/>
+          <property name="XMXMap" value="xslt/input_map_req_2.map"/>
+          <property name="SMOVersion" value="SMO61"/>
+          <inputTerminal type="BP2Interface:findRequestMsg"/>
+          <outputTerminal type="ns2:retrieveDb2adminTestRequestMsg">
+            <wire targetNode="Партнер_JDBCImport_retrieveDb2adminTest_Callout"/>
+          </outputTerminal>
+          <failTerminal/>
+        </node>
+      </requestFlow>
+      <responseFlow>
+        <node displayName="retrieveDb2adminTest : Партнер_JDBCImport" name="Партнер_JDBCImport_retrieveDb2adminTest_CalloutResponse" type="CalloutResponse">
+          <property name="referenceName" value="Партнер_JDBCImport"/>
+          <property name="operationName" value="retrieveDb2adminTest"/>
+          <outputTerminal type="ns2:retrieveDb2adminTestResponseMsg">
+            <wire targetNode="output_map"/>
+          </outputTerminal>
+          <failTerminal type="ns2:retrieveDb2adminTestRequestMsg"/>
+        </node>
+        <node displayName="retrieveDb2adminTest : Партнер_JDBCImport" name="Партнер_JDBCImport_retrieveDb2adminTest_CalloutFault" type="CalloutFault">
+          <property name="referenceName" value="Партнер_JDBCImport"/>
+          <property name="operationName" value="retrieveDb2adminTest"/>
+          <outputTerminal name="retrieveDb2adminTestMissingDataFaultMsg" type="ns2:retrieveDb2adminTestMissingDataFaultMsg">
+            <wire targetNode="Fail2"/>
+          </outputTerminal>
+          <outputTerminal name="retrieveDb2adminTestRecordNotFoundFaultMsg" type="ns2:retrieveDb2adminTestRecordNotFoundFaultMsg">
+            <wire targetNode="Fail3"/>
+          </outputTerminal>
+          <outputTerminal name="retrieveDb2adminTestMultipleMatchingRecordsFaultMsg" type="ns2:retrieveDb2adminTestMultipleMatchingRecordsFaultMsg">
+            <wire targetNode="Fail1"/>
+          </outputTerminal>
+        </node>
+        <node displayName="find : BP2Interface" name="BP2Interface_find_InputResponse" type="InputResponse">
+          <inputTerminal type="BP2Interface:findResponseMsg"/>
+        </node>
+        <node name="output_map" type="XSLTransformation">
+          <property name="root" value="/body"/>
+          <property name="XSLTransform" value="xslt/output_map_res_2.xsl"/>
+          <property name="XMXMap" value="xslt/output_map_res_2.map"/>
+          <property name="SMOVersion" value="SMO61"/>
+          <inputTerminal type="ns2:retrieveDb2adminTestResponseMsg"/>
+          <outputTerminal type="BP2Interface:findResponseMsg">
+            <wire targetNode="BP2Interface_find_InputResponse"/>
+          </outputTerminal>
+          <failTerminal/>
+        </node>
+        <node name="Fail1" type="Fail">
+          <inputTerminal/>
+        </node>
+        <node name="Fail2" type="Fail">
+          <inputTerminal/>
+        </node>
+        <node name="Fail3" type="Fail">
+          <inputTerminal/>
+        </node>
+      </responseFlow>
+      <errorFlow>
+        <node displayName="find : BP2Interface" name="BP2Interface_find_ErrorInput" type="ErrorInput">
+          <outputTerminal name="catchAll" type="XMLSchema:anyType"/>
+        </node>
+        <node displayName="find : BP2Interface" name="BP2Interface_find_InputResponse" type="InputResponse">
+          <inputTerminal type="BP2Interface:findResponseMsg"/>
+        </node>
+      </errorFlow>
+    </operation>
+  </interface>
+</mediationFlow>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?><body xmlns:in="wsdl.http://JDBCTestModule/BPInterface" xmlns:in2="http://JDBCTestModule" xmlns:in3="http://JDBCTestModule/BPInterface" xmlns:io="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/db2admintest" xmlns:io2="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:io3="http://www.ibm.com/xmlns/prod/websphere/mq/sca/6.0.0" xmlns:io4="http://www.ibm.com/xmlns/prod/websphere/http/sca/6.1.0" xmlns:io5="http://www.w3.org/2005/08/addressing" xmlns:io6="http://www.w3.org/2003/05/soap-envelope" xmlns:io7="http://www.ibm.com/websphere/sibx/smo/v6.0.1" xmlns:out="http://JDBCTestModule/JDBCImport" xmlns:out2="wsdl.http://JDBCTestModule/JDBCImport" xmlns:out3="http://com/ibm/j2ca/fault/afcfault" xmlns:out4="http://com/ibm/j2ca/fault" xmlns:xs4xs="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="out2:createDb2adminTestRequestMsg">
+  <out:createDb2adminTest>
+    <out:createDb2adminTestInput>
+      <id>1</id>
+      <name>name</name>
+      <value>value</value>
+      <price xsi:nil="true"/>
+    </out:createDb2adminTestInput>
+  </out:createDb2adminTest>
+</body>

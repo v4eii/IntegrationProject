@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="BPInterface" targetNamespace="http://JDBCTestModule/BPInterface" xmlns:bons1="http://JDBCTestModule" xmlns:bons2="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/db2admintest" xmlns:tns="http://JDBCTestModule/BPInterface" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <wsdl:types>
+    <xsd:schema targetNamespace="http://JDBCTestModule/BPInterface">
+      <xsd:import namespace="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/db2admintest" schemaLocation="Db2adminTest.xsd"/>
+      <xsd:import namespace="http://JDBCTestModule" schemaLocation="SimpleData.xsd"/>
+      <xsd:element name="create">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="input1" nillable="true" type="bons1:SimpleData"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="createResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="output1" nillable="true" type="bons2:Db2adminTest"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+    <wsdl:message name="createRequestMsg">
+    <wsdl:part element="tns:create" name="createParameters"/>
+  </wsdl:message>
+    <wsdl:message name="createResponseMsg">
+    <wsdl:part element="tns:createResponse" name="createResult"/>
+  </wsdl:message>
+    <wsdl:portType name="BPInterface">
+    <wsdl:operation name="create">
+      <wsdl:input message="tns:createRequestMsg" name="createRequest"/>
+      <wsdl:output message="tns:createResponseMsg" name="createResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

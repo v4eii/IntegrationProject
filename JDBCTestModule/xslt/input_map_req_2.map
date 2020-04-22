@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><mappingRoot xmlns="http://www.ibm.com/2008/ccl/Mapping" domainID="com.ibm.msl.mapping.xml" targetNamespace="http://JDBCTestModule/xslt/input_map_req_2" version="8.0.5.0" xmlns:map="http://JDBCTestModule/xslt/input_map_req_2">
+    <input correlationContext="" message="{http://JDBCTestModule/BP2Interface}findRequestMsg" sharedContext="" smoName="wsdl-primary" transientContext="" type="smo" types="" xpath="/body"/>
+    <output correlationContext="" message="{http://JDBCTestModule/JDBCImport}retrieveDb2adminTestRequestMsg" sharedContext="" smoName="wsdl-primary" transientContext="" type="smo" types="" xpath="/body"/>
+    <imports>
+        <import kind="java" location="ru.neoflex.DataConverter" namespace="xalan://ru.neoflex.DataConverter"/>
+    </imports>
+    <namespaces>
+        <namespace kind="supplement" prefix="io6" uri="http://www.ibm.com/websphere/sibx/smo/v6.0.1"/>
+        <namespace kind="supplement" prefix="in" uri="http://JDBCTestModule/BP2Interface"/>
+        <namespace kind="supplement" prefix="io" uri="http://schemas.xmlsoap.org/ws/2004/08/addressing"/>
+        <namespace kind="supplement" prefix="in2" uri="wsdl.http://JDBCTestModule/BP2Interface"/>
+        <namespace kind="supplement" prefix="io3" uri="http://www.ibm.com/xmlns/prod/websphere/http/sca/6.1.0"/>
+        <namespace kind="supplement" prefix="io2" uri="http://www.ibm.com/xmlns/prod/websphere/mq/sca/6.0.0"/>
+        <namespace kind="supplement" prefix="io5" uri="http://www.w3.org/2003/05/soap-envelope"/>
+        <namespace kind="supplement" prefix="io4" uri="http://www.w3.org/2005/08/addressing"/>
+        <namespace kind="supplement" prefix="in3" uri="http://JDBCTestModule"/>
+        <namespace kind="supplement" prefix="out2" uri="http://JDBCTestModule/JDBCImport"/>
+        <namespace kind="supplement" prefix="out3" uri="wsdl.http://JDBCTestModule/JDBCImport"/>
+        <namespace kind="supplement" prefix="out4" uri="http://com/ibm/j2ca/fault/afcfault"/>
+        <namespace kind="supplement" prefix="out5" uri="http://com/ibm/j2ca/fault"/>
+        <namespace kind="supplement" prefix="out" uri="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/db2admintest"/>
+        <namespace kind="extension" prefix="DataConverter" uri="xalan://ru.neoflex.DataConverter"/>
+    </namespaces>
+    <mappingDeclaration name="input_map_req_2">
+        <input path="body"/>
+        <output path="body"/>
+        <move>
+            <input path="find/input1/name"/>
+            <output path="retrieveDb2adminTest/retrieveDb2adminTestInput/name"/>
+        </move>
+        <move>
+            <input path="find/input1/value"/>
+            <output path="retrieveDb2adminTest/retrieveDb2adminTestInput/value"/>
+        </move>
+        <customFunction lang="java" ref="DataConverter:sampleTransform">
+            <input path="find/input1/price" var="price"/>
+            <output path="retrieveDb2adminTest/retrieveDb2adminTestInput/price"/>
+            <param name="price" value="$price"/>
+        </customFunction>
+        <assign value="14">
+            <output path="retrieveDb2adminTest/retrieveDb2adminTestInput/id"/>
+        </assign>
+    </mappingDeclaration>
+</mappingRoot>

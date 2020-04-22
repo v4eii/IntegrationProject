@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="BP2Interface" targetNamespace="http://JDBCTestModule/BP2Interface" xmlns:bons1="http://JDBCTestModule" xmlns:tns="http://JDBCTestModule/BP2Interface" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <wsdl:types>
+    <xsd:schema targetNamespace="http://JDBCTestModule/BP2Interface">
+      <xsd:import namespace="http://JDBCTestModule" schemaLocation="SimpleData.xsd"/>
+      <xsd:element name="find">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="input1" nillable="true" type="bons1:SimpleData"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="findResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="output1" nillable="true" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+    <wsdl:message name="findRequestMsg">
+    <wsdl:part element="tns:find" name="findParameters"/>
+  </wsdl:message>
+    <wsdl:message name="findResponseMsg">
+    <wsdl:part element="tns:findResponse" name="findResult"/>
+  </wsdl:message>
+    <wsdl:portType name="BP2Interface">
+    <wsdl:operation name="find">
+      <wsdl:input message="tns:findRequestMsg" name="findRequest"/>
+      <wsdl:output message="tns:findResponseMsg" name="findResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

@@ -9,9 +9,12 @@
       <properties>
         <DestinationType>javax.jms.Queue</DestinationType>
       </properties>
+      <authentication resAuthAlias="DeAdminAlias"/>
     </connection>
-    <methodBinding method="div" nativeMethod="div"/>
-    <responseConnection type="com.ibm.ws.sib.api.jmsra.impl.JmsJcaManagedConnectionFactoryImpl"/>
+    <methodBinding inDataBindingType="com.ibm.websphere.sca.jms.data.impl.JMSDataBindingImplJava" method="div" nativeMethod="div" outDataBindingType="com.ibm.websphere.sca.jms.data.impl.JMSDataBindingImplJava" preferredOutputMessageType="BytesMessage"/>
+    <responseConnection type="com.ibm.ws.sib.api.jmsra.impl.JmsJcaManagedConnectionFactoryImpl">
+      <authentication resAuthAlias="DeAdminAlias"/>
+    </responseConnection>
     <destination implType="com.ibm.ws.sib.api.jms.impl.JmsQueueImpl" type="javax.jms.Queue" usage="receive"/>
     <destination implType="com.ibm.ws.sib.api.jms.impl.JmsQueueImpl" type="javax.jms.Queue" usage="send"/>
     <destination implType="com.ibm.ws.sib.api.jms.impl.JmsQueueImpl" type="javax.jms.Queue" usage="callback"/>

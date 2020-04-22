@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="JDBCImport" targetNamespace="http://JDBCTestModule/JDBCImport" xmlns:bons1="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/db2admintest" xmlns:bons2="http://com/ibm/j2ca/fault/afcfault" xmlns:tns="http://JDBCTestModule/JDBCImport" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <wsdl:types>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="http://com/ibm/j2ca/fault/afcfault" xmlns:tns="http://com/ibm/j2ca/fault/afcfault">
+      <xsd:include schemaLocation="MultipleMatchingRecordsFault.xsd"/>
+      <xsd:include schemaLocation="RecordNotFoundFault.xsd"/>
+      <xsd:include schemaLocation="UniqueConstraintFault.xsd"/>
+      <xsd:include schemaLocation="ObjectNotFoundFault.xsd"/>
+      <xsd:include schemaLocation="MissingDataFault.xsd"/>
+      <xsd:include schemaLocation="IntegrityConstraintFault.xsd"/>
+    </xsd:schema>
+    <xsd:schema elementFormDefault="qualified" targetNamespace="http://JDBCTestModule/JDBCImport" xmlns:bons5="http://com/ibm/j2ca/fault/afcfault">
+      <xsd:import namespace="http://www.ibm.com/xmlns/prod/websphere/j2ca/jdbc/db2admintest" schemaLocation="Db2adminTest.xsd"/>
+      <xsd:import namespace="http://com/ibm/j2ca/fault/afcfault"/>
+      <xsd:element name="createDb2adminTest">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="createDb2adminTestInput" type="bons1:Db2adminTest"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="createDb2adminTestResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="createDb2adminTestOutput" type="bons1:Db2adminTest"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="MissingDataFault_element" nillable="true" type="bons5:MissingDataFault"/>
+      <xsd:element name="UniqueConstraintFault_element" nillable="true" type="bons5:UniqueConstraintFault"/>
+      <xsd:element name="ObjectNotFoundFault_element" nillable="true" type="bons5:ObjectNotFoundFault"/>
+      <xsd:element name="IntegrityConstraintFault_element" nillable="true" type="bons5:IntegrityConstraintFault"/>
+      <xsd:element name="updateDb2adminTest">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="updateDb2adminTestInput" type="bons1:Db2adminTest"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="updateDb2adminTestResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="updateDb2adminTestOutput" type="bons1:Db2adminTest"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="RecordNotFoundFault_element" nillable="true" type="bons5:RecordNotFoundFault"/>
+      <xsd:element name="MultipleMatchingRecordsFault_element" nillable="true" type="bons5:MultipleMatchingRecordsFault"/>
+      <xsd:element name="deleteDb2adminTest">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="deleteDb2adminTestInput" type="bons1:Db2adminTest"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="deleteDb2adminTestResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="deleteDb2adminTestOutput" type="bons1:Db2adminTest"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="retrieveDb2adminTest">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="retrieveDb2adminTestInput" type="bons1:Db2adminTest"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="retrieveDb2adminTestResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="retrieveDb2adminTestOutput" type="bons1:Db2adminTest"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="createDb2adminTestRequestMsg">
+    <wsdl:part element="tns:createDb2adminTest" name="createDb2adminTestParameters"/>
+  </wsdl:message>
+  <wsdl:message name="createDb2adminTestResponseMsg">
+    <wsdl:part element="tns:createDb2adminTestResponse" name="createDb2adminTestResult"/>
+  </wsdl:message>
+  <wsdl:message name="createDb2adminTestMissingDataFaultMsg">
+    <wsdl:part element="tns:MissingDataFault_element" name="MissingDataFault"/>
+  </wsdl:message>
+  <wsdl:message name="createDb2adminTestUniqueConstraintFaultMsg">
+    <wsdl:part element="tns:UniqueConstraintFault_element" name="UniqueConstraintFault"/>
+  </wsdl:message>
+  <wsdl:message name="createDb2adminTestObjectNotFoundFaultMsg">
+    <wsdl:part element="tns:ObjectNotFoundFault_element" name="ObjectNotFoundFault"/>
+  </wsdl:message>
+  <wsdl:message name="createDb2adminTestIntegrityConstraintFaultMsg">
+    <wsdl:part element="tns:IntegrityConstraintFault_element" name="IntegrityConstraintFault"/>
+  </wsdl:message>
+  <wsdl:message name="updateDb2adminTestRequestMsg">
+    <wsdl:part element="tns:updateDb2adminTest" name="updateDb2adminTestParameters"/>
+  </wsdl:message>
+  <wsdl:message name="updateDb2adminTestResponseMsg">
+    <wsdl:part element="tns:updateDb2adminTestResponse" name="updateDb2adminTestResult"/>
+  </wsdl:message>
+  <wsdl:message name="updateDb2adminTestMissingDataFaultMsg">
+    <wsdl:part element="tns:MissingDataFault_element" name="MissingDataFault"/>
+  </wsdl:message>
+  <wsdl:message name="updateDb2adminTestRecordNotFoundFaultMsg">
+    <wsdl:part element="tns:RecordNotFoundFault_element" name="RecordNotFoundFault"/>
+  </wsdl:message>
+  <wsdl:message name="updateDb2adminTestMultipleMatchingRecordsFaultMsg">
+    <wsdl:part element="tns:MultipleMatchingRecordsFault_element" name="MultipleMatchingRecordsFault"/>
+  </wsdl:message>
+  <wsdl:message name="updateDb2adminTestUniqueConstraintFaultMsg">
+    <wsdl:part element="tns:UniqueConstraintFault_element" name="UniqueConstraintFault"/>
+  </wsdl:message>
+  <wsdl:message name="updateDb2adminTestObjectNotFoundFaultMsg">
+    <wsdl:part element="tns:ObjectNotFoundFault_element" name="ObjectNotFoundFault"/>
+  </wsdl:message>
+  <wsdl:message name="updateDb2adminTestIntegrityConstraintFaultMsg">
+    <wsdl:part element="tns:IntegrityConstraintFault_element" name="IntegrityConstraintFault"/>
+  </wsdl:message>
+  <wsdl:message name="deleteDb2adminTestRequestMsg">
+    <wsdl:part element="tns:deleteDb2adminTest" name="deleteDb2adminTestParameters"/>
+  </wsdl:message>
+  <wsdl:message name="deleteDb2adminTestResponseMsg">
+    <wsdl:part element="tns:deleteDb2adminTestResponse" name="deleteDb2adminTestResult"/>
+  </wsdl:message>
+  <wsdl:message name="deleteDb2adminTestMissingDataFaultMsg">
+    <wsdl:part element="tns:MissingDataFault_element" name="MissingDataFault"/>
+  </wsdl:message>
+  <wsdl:message name="deleteDb2adminTestRecordNotFoundFaultMsg">
+    <wsdl:part element="tns:RecordNotFoundFault_element" name="RecordNotFoundFault"/>
+  </wsdl:message>
+  <wsdl:message name="retrieveDb2adminTestRequestMsg">
+    <wsdl:part element="tns:retrieveDb2adminTest" name="retrieveDb2adminTestParameters"/>
+  </wsdl:message>
+  <wsdl:message name="retrieveDb2adminTestResponseMsg">
+    <wsdl:part element="tns:retrieveDb2adminTestResponse" name="retrieveDb2adminTestResult"/>
+  </wsdl:message>
+  <wsdl:message name="retrieveDb2adminTestMissingDataFaultMsg">
+    <wsdl:part element="tns:MissingDataFault_element" name="MissingDataFault"/>
+  </wsdl:message>
+  <wsdl:message name="retrieveDb2adminTestRecordNotFoundFaultMsg">
+    <wsdl:part element="tns:RecordNotFoundFault_element" name="RecordNotFoundFault"/>
+  </wsdl:message>
+  <wsdl:message name="retrieveDb2adminTestMultipleMatchingRecordsFaultMsg">
+    <wsdl:part element="tns:MultipleMatchingRecordsFault_element" name="MultipleMatchingRecordsFault"/>
+  </wsdl:message>
+  <wsdl:portType name="JDBCImport">
+    <wsdl:operation name="createDb2adminTest">
+      <wsdl:input message="tns:createDb2adminTestRequestMsg" name="createDb2adminTestRequest"/>
+      <wsdl:output message="tns:createDb2adminTestResponseMsg" name="createDb2adminTestResponse"/>
+      <wsdl:fault message="tns:createDb2adminTestMissingDataFaultMsg" name="MISSING_DATA"/>
+      <wsdl:fault message="tns:createDb2adminTestUniqueConstraintFaultMsg" name="UNIQUECONSTRAINT_VIOLATION"/>
+      <wsdl:fault message="tns:createDb2adminTestObjectNotFoundFaultMsg" name="OBJECT_NOTFOUND_EXCEPTION"/>
+      <wsdl:fault message="tns:createDb2adminTestIntegrityConstraintFaultMsg" name="INTEGRITY_CONSTRAINT_VIOLATION"/>
+    </wsdl:operation>
+    <wsdl:operation name="updateDb2adminTest">
+      <wsdl:input message="tns:updateDb2adminTestRequestMsg" name="updateDb2adminTestRequest"/>
+      <wsdl:output message="tns:updateDb2adminTestResponseMsg" name="updateDb2adminTestResponse"/>
+      <wsdl:fault message="tns:updateDb2adminTestMissingDataFaultMsg" name="MISSING_DATA"/>
+      <wsdl:fault message="tns:updateDb2adminTestRecordNotFoundFaultMsg" name="RECORD_NOT_FOUND"/>
+      <wsdl:fault message="tns:updateDb2adminTestMultipleMatchingRecordsFaultMsg" name="MULTIPLE_MATCHING_RECORDS"/>
+      <wsdl:fault message="tns:updateDb2adminTestUniqueConstraintFaultMsg" name="UNIQUECONSTRAINT_VIOLATION"/>
+      <wsdl:fault message="tns:updateDb2adminTestObjectNotFoundFaultMsg" name="OBJECT_NOTFOUND_EXCEPTION"/>
+      <wsdl:fault message="tns:updateDb2adminTestIntegrityConstraintFaultMsg" name="INTEGRITY_CONSTRAINT_VIOLATION"/>
+    </wsdl:operation>
+    <wsdl:operation name="deleteDb2adminTest">
+      <wsdl:input message="tns:deleteDb2adminTestRequestMsg" name="deleteDb2adminTestRequest"/>
+      <wsdl:output message="tns:deleteDb2adminTestResponseMsg" name="deleteDb2adminTestResponse"/>
+      <wsdl:fault message="tns:deleteDb2adminTestMissingDataFaultMsg" name="MISSING_DATA"/>
+      <wsdl:fault message="tns:deleteDb2adminTestRecordNotFoundFaultMsg" name="RECORD_NOT_FOUND"/>
+    </wsdl:operation>
+    <wsdl:operation name="retrieveDb2adminTest">
+      <wsdl:input message="tns:retrieveDb2adminTestRequestMsg" name="retrieveDb2adminTestRequest"/>
+      <wsdl:output message="tns:retrieveDb2adminTestResponseMsg" name="retrieveDb2adminTestResponse"/>
+      <wsdl:fault message="tns:retrieveDb2adminTestMissingDataFaultMsg" name="MISSING_DATA"/>
+      <wsdl:fault message="tns:retrieveDb2adminTestRecordNotFoundFaultMsg" name="RECORD_NOT_FOUND"/>
+      <wsdl:fault message="tns:retrieveDb2adminTestMultipleMatchingRecordsFaultMsg" name="MULTIPLE_MATCHING_RECORDS"/>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

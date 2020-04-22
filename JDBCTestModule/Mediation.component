@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scdl:component xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mfc="http://www.ibm.com/xmlns/prod/websphere/scdl/mfc/6.0.0" xmlns:ns1="http://JDBCTestModule/BPInterface" xmlns:ns2="http://JDBCTestModule/JDBCImport" xmlns:ns3="http://JDBCTestModule/BP2Interface" xmlns:scdl="http://www.ibm.com/xmlns/prod/websphere/scdl/6.0.0" xmlns:wsdl="http://www.ibm.com/xmlns/prod/websphere/scdl/wsdl/6.0.0" displayName="Mediation" name="Mediation">
+  <interfaces>
+    <interface xsi:type="wsdl:WSDLPortType" preferredInteractionStyle="async" portType="ns1:BPInterface"/>
+    <interface xsi:type="wsdl:WSDLPortType" portType="ns3:BP2Interface"/>
+  </interfaces>
+  <references>
+    <reference name="Партнер_JDBCImport">
+      <interface xsi:type="wsdl:WSDLPortType" portType="ns2:JDBCImport"/>
+      <wire target="JDBCImport"/>
+    </reference>
+  </references>
+  <implementation xsi:type="mfc:MediationFlowImplementation" mfcFile="Mediation.mfc"/>
+</scdl:component>
