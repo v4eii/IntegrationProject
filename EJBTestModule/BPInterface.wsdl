@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="BPInterface" targetNamespace="http://EJBTestModule/BPInterface" xmlns:bons1="http://EJBTestModule" xmlns:tns="http://EJBTestModule/BPInterface" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <wsdl:types>
+    <xsd:schema targetNamespace="http://EJBTestModule/BPInterface">
+            <xsd:import namespace="http://EJBTestModule" schemaLocation="SimpleData.xsd"/>
+            <xsd:element name="check">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="input1" nillable="true" type="bons1:SimpleData"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+      <xsd:element name="checkResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="output1" nillable="true" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+    </xsd:schema>
+  </wsdl:types>
+    <wsdl:message name="checkRequestMsg">
+    <wsdl:part element="tns:check" name="checkParameters"/>
+  </wsdl:message>
+    <wsdl:message name="checkResponseMsg">
+    <wsdl:part element="tns:checkResponse" name="checkResult"/>
+  </wsdl:message>
+    <wsdl:portType name="BPInterface">
+    <wsdl:operation name="check">
+      <wsdl:input message="tns:checkRequestMsg" name="checkRequest"/>
+      <wsdl:output message="tns:checkResponseMsg" name="checkResponse"/>
+    </wsdl:operation>
+  </wsdl:portType>
+</wsdl:definitions>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="EJBProxyImpl" targetNamespace="http://EJBTestModule/EJBProxyImpl" xmlns:bons1="http://EJBTestModule" xmlns:tns="http://EJBTestModule/EJBProxyImpl" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <wsdl:types>
+    <xsd:schema targetNamespace="http://EJBTestModule/EJBProxyImpl">
+      <xsd:import namespace="http://EJBTestModule" schemaLocation="SimpleData.xsd"/>
+      <xsd:element name="log">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="input1" nillable="true" type="bons1:SimpleData"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+            <xsd:element name="logReturn">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="input1" nillable="true" type="bons1:SimpleData"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+            <xsd:element name="logReturnResponse">
+        <xsd:complexType>
+          <xsd:sequence>
+            <xsd:element name="output1" nillable="true" type="xsd:string"/>
+          </xsd:sequence>
+        </xsd:complexType>
+      </xsd:element>
+        </xsd:schema>
+  </wsdl:types>
+    <wsdl:message name="logRequestMsg">
+    <wsdl:part element="tns:log" name="logParameters"/>
+  </wsdl:message>
+    <wsdl:message name="logReturnRequestMsg">
+    <wsdl:part element="tns:logReturn" name="logReturnParameters"/>
+  </wsdl:message>
+    <wsdl:message name="logReturnResponseMsg">
+    <wsdl:part element="tns:logReturnResponse" name="logReturnResult"/>
+  </wsdl:message>
+    <wsdl:portType name="EJBProxyImpl">
+    <wsdl:operation name="log">
+      <wsdl:input message="tns:logRequestMsg" name="logRequest"/>
+    </wsdl:operation>
+        <wsdl:operation name="logReturn">
+      <wsdl:input message="tns:logReturnRequestMsg" name="logReturnRequest"/>
+      <wsdl:output message="tns:logReturnResponseMsg" name="logReturnResponse"/>
+    </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

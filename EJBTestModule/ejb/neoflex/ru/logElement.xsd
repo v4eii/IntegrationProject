@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?><xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" attributeFormDefault="unqualified" elementFormDefault="unqualified" targetNamespace="http://ejb/neoflex/ru" xmlns:tns="http://ejb/neoflex/ru">
+  <xs:element name="log">
+    <xs:complexType>
+      <xs:annotation>
+        <xs:appinfo source="http://www.ibm.com/xmlns/prod/websphere/jaxb/metadata">
+          <jasi:JavaObjectTypeMetadata xmlns:jasi="http://www.ibm.com/xmlns/prod/websphere/jaxb/metadata">
+            <jasi:ObjectName>ru.neoflex.ejb.jaxws.Log</jasi:ObjectName>
+            <jasi:ImplClass>ru.neoflex.ejb.LoggerLocal</jasi:ImplClass>
+          </jasi:JavaObjectTypeMetadata>
+        </xs:appinfo>
+      </xs:annotation>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="arg0" type="xs:string"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
