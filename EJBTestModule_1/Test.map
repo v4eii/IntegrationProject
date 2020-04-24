@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map:businessObjectMap xmlns:Test="http://EJBTestModule" xmlns:map="http://www.ibm.com/xmlns/prod/websphere/wbiserver/map/6.0.0" targetNamespace="http://EJBTestModule">
+  <map:name>Test</map:name>
+  <map:inputBusinessObjectVariable businessObjectRef="Test:SimpleData" name="SimpleData"/>
+  <map:outputBusinessObjectVariable businessObjectRef="Test:SimpleData" name="SimpleData_1"/>
+  <map:propertyMap executionOrder="1">
+    <map:move>
+      <map:input businessObjectVariableRef="SimpleData" property="name"/>
+      <map:output businessObjectVariableRef="SimpleData_1" property="name"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="2">
+    <map:move>
+      <map:input businessObjectVariableRef="SimpleData" property="value"/>
+      <map:output businessObjectVariableRef="SimpleData_1" property="value"/>
+    </map:move>
+  </map:propertyMap>
+  <map:propertyMap executionOrder="3">
+    <map:move>
+      <map:input businessObjectVariableRef="SimpleData" property="price"/>
+      <map:output businessObjectVariableRef="SimpleData_1" property="price"/>
+    </map:move>
+  </map:propertyMap>
+</map:businessObjectMap>

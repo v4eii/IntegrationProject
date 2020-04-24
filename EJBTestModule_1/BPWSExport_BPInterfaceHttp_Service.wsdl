@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="Экспорт_BPInterface1_BPInterfaceHttp_Service" targetNamespace="http://EJBTestModule/BPInterface" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:this="http://EJBTestModule/BPInterface">
+  <wsdl:import location="BPInterface.wsdl" namespace="http://EJBTestModule/BPInterface"/>
+  <wsdl:binding name="Экспорт_BPInterface1_BPInterfaceHttpBinding" type="this:BPInterface">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="check">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="checkRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="checkResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="BPInterface1_BPInterfaceHttpService">
+    <wsdl:port binding="this:Экспорт_BPInterface1_BPInterfaceHttpBinding" name="BPWSExport_BPInterfaceHttpPort">
+      <soap:address location="http://localhost:9080/EJBTestModule_1Web/sca/BPWSExport"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

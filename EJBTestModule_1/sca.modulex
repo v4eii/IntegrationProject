@@ -22,12 +22,12 @@
       <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:NodeExtension" unknown="false" visible="true" x="291" y="31"/>
     </extensions>
     <extensions>
-      <extendedObject href="BPWSExport.export#//@export"/>
-      <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:ExportExtension" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/jaxws/6.0.0}JaxWsExportBinding" unknown="false" visible="true" x="30" y="30" bound="true"/>
-    </extensions>
-    <extensions>
       <extendedObject href="sca.module#//@module"/>
       <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:ModuleExtension" autoLayout="true"/>
+    </extensions>
+    <extensions>
+      <extendedObject href="BPWSExport.export#//@export"/>
+      <extensionObject xsi:type="com.ibm.wbit.wiring.ui.ext.model:ExportExtension" type="{http://www.ibm.com/xmlns/prod/websphere/scdl/jaxws/6.0.0}JaxWsExportBinding" unknown="false" visible="true" x="30" y="30" bound="true"/>
     </extensions>
     <extensions>
       <extendedObject href="sca.module#//@module"/>

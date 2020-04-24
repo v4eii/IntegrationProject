@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" name="BP" targetNamespace="http://EJBTestModule/BPArtifacts" xmlns:plnk="http://schemas.xmlsoap.org/ws/2004/03/partner-link/" xmlns:tns="http://EJBTestModule/BPArtifacts" xmlns:wsdl0="http://EJBTestModule/BPInterface" xmlns:wsdl1="http://EJBTestModule/EJBProxyImpl" xmlns:wsdl2="http://ejb/neoflex/ru" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <plnk:partnerLinkType name="BPInterfacePLT">
+    <plnk:role name="Interface">
+      <plnk:portType name="wsdl0:BPInterface"/>
+    </plnk:role>
+  </plnk:partnerLinkType>
+  <plnk:partnerLinkType name="EJBProxyImplPLT">
+    <plnk:role name="Interface">
+      <plnk:portType name="wsdl1:EJBProxyImpl"/>
+    </plnk:role>
+  </plnk:partnerLinkType>
+    <wsdl:import location="BPInterface.wsdl" namespace="http://EJBTestModule/BPInterface"/>
+    <wsdl:import location="EJBProxyImpl.wsdl" namespace="http://EJBTestModule/EJBProxyImpl"/>
+</wsdl:definitions>
